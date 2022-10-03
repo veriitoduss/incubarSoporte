@@ -72,6 +72,12 @@ class administradorModel extends Mysql
     $request=$this->select_all($sql);
     return $request;
   }
+  // public function getProyectosID($id_proyecto)
+  // {
+  //   $sql ="SELECT * FROM proyectos WHERE id_proyecto=$id_proyecto";
+  //   $request=$this->select_all($sql);
+  //   return $request;
+  // }
   public function getCliente()
   {
     $sql ="SELECT c.nombre_cliente, p.nombre_proyecto FROM clientes c, proyectos p WHERE c.id_proyecto=p.id_proyecto";
@@ -80,17 +86,24 @@ class administradorModel extends Mysql
   }
   public function getPrioridades()
   {
-    $sql ="SELECT pr.nombre_prioridad, p.nombre_proyecto FROM prioridades pr, proyectos p WHERE pr.id_proyecto=p.id_proyecto";
+    $sql ="SELECT p.id_proyecto,pr.id_prioridad,pr.nombre_prioridad, p.nombre_proyecto FROM prioridades pr, proyectos p WHERE pr.id_proyecto=p.id_proyecto AND pr.eliminar=0";
     $request=$this->select_all($sql);
     return $request;
   }
-  public function setPrioridad(string $nombre_prioridad,int $id_proyecto)
+  public function setPrioridad(string $nombre_prioridad,int $id_proyecto, int $eliminar,$fecha_eliminado)
   {
-    $query_insert ="INSERT INTO prioridades(nombre_prioridad,id_proyecto) VALUES (?,?)";
-    $arrData=array ($nombre_prioridad,$id_proyecto);
-    $request_insert=$this->insert($query_insert,$arrData);
+    $query_insert ="INSERT INTO prioridades(nombre_prioridad,id_proyecto,eliminar,fecha_eliminado) VALUES (?,?,?,?)";
+    $arrData=array ($nombre_prioridad,$id_proyecto,$eliminar,$fecha_eliminado);
+    $request_insert=$this->insert($query_insert,$arrData,$eliminar,$fecha_eliminado);
     return $request_insert;
   }
+  //   public function updatePrioridad($eliminar,$fecha_eliminado)
+  // {
+  //   $sql ="UPDATE agentes SET nombre_agente=? ,correo_agente=?,usuario_agente=?,contrasena_agente=?,id_rol=? where id_agente=$id_agente";
+  //   $arrData= array ($nombre_agente,$correo_agente,$usuario_agente,$contrasena_agente,$id_rol);
+  //   $request=$this->update($sql,$arrData);
+  //   return $request;
+  // }
   public function setCliente($valor)
   {
     $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto) VALUES ('$valor')";

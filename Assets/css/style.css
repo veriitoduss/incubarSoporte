@@ -860,7 +860,15 @@ a:hover {
     margin-left: -15px;
     margin-right: -15px
 }
-
+.panel-body .buttonELiminar{
+    background-color: transparent!important;
+    border: none!important;
+    color: red!important;
+    }
+.panel-body .buttonEditar{
+    color: blue!important;
+    cursor:pointer;
+    }
 .b-0 {
     border: none!important
 }

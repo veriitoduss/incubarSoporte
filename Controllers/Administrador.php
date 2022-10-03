@@ -101,6 +101,8 @@ class Administrador extends Controllers
     $data['administrador'] = "Administrador";
     $data['tag_page'] = "Soporte - Incubarhuila";
     $data['proyectos'] = $this->model->getProyectos();
+    // $id_proyecto=;
+    // $data['proyectosID'] = $this->model->getProyectosID($id_proyecto);
     $data['prioridades'] = $this->model->getPrioridades();
     $this->views->getView($this, "prioridades", $data);
   }
@@ -108,8 +110,18 @@ class Administrador extends Controllers
   {
     $nombre_prioridad = $_POST['nombre_prioridad'];
     $id_proyecto = $_POST['id_proyecto'];
-    $this->model->setPrioridad($nombre_prioridad, $id_proyecto);
-    header("Location: " . base_url() . "administrador/prioridad");
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = $_POST['fecha_eliminado'];
+    $this->model->setPrioridad($nombre_prioridad, $id_proyecto,$eliminar,$fecha_eliminado);
+    header("Location: " . base_url() . "administrador/prioridades");
+  }
+  public function ModificarPrioridad($id_prioridad)
+  {
+    // $id_prioridad = $_GET['eliminar'];
+    // $eliminar = $_GET['eliminar'];
+    // $fecha_eliminado =date("Y-m-d H:i:s");
+    // $this->model->updatePrioridad($eliminar,$fecha_eliminado);
+    // header("Location: " . base_url() . "administrador/prioridades");
   }
 
   // Proyectos
