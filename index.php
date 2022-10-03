@@ -23,3 +23,4 @@ if (!empty($arrUrl[2])) {
 require_once ("libraries/Core/AutoLoad.php");
 require_once ("libraries/Core/Load.php");
 ?>
+hola
