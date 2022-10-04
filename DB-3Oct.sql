@@ -1,6 +1,6 @@
 /*
 SQLyog Community v8.71 
-MySQL - 5.5.5-10.4.20-MariaDB : Database - incubarsoporte
+MySQL - 5.5.5-10.4.24-MariaDB : Database - incubarsoporte
 *********************************************************************
 */
 
@@ -46,7 +46,7 @@ CREATE TABLE `categorias` (
   `eliminar` tinyint(1) DEFAULT NULL,
   `fecha_eliminado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `categorias` */
 
@@ -180,6 +180,20 @@ CREATE TABLE `proyectos` (
 
 insert  into `proyectos`(`id_proyecto`,`nombre_proyecto`,`identificador_proyecto`,`eliminar`,`fecha_eliminado`) values (1,'Institucion o sede educativa','IE',0,NULL),(2,'Sede alcaldia de Neiva','SA',0,NULL),(3,'General','G',0,'0000-00-00 00:00:00');
 
+/*Table structure for table `prueba` */
+
+DROP TABLE IF EXISTS `prueba`;
+
+CREATE TABLE `prueba` (
+  `id_prueba` int(11) NOT NULL AUTO_INCREMENT,
+  `datos_prueba` double DEFAULT NULL,
+  PRIMARY KEY (`id_prueba`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `prueba` */
+
+insert  into `prueba`(`id_prueba`,`datos_prueba`) values (13,0),(14,0),(15,0),(16,0),(17,0),(18,0),(19,0),(20,0),(21,0),(22,0),(23,0),(24,0),(25,0),(26,0),(27,0),(28,0),(29,0),(30,0),(31,0),(32,0),(33,0),(34,0);
+
 /*Table structure for table `roles` */
 
 DROP TABLE IF EXISTS `roles`;
@@ -234,11 +248,11 @@ CREATE TABLE `tipo_identificaciones` (
   `eliminar` tinyint(1) DEFAULT NULL,
   `fecha_eliminado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_tipo_identificacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tipo_identificaciones` */
 
-insert  into `tipo_identificaciones`(`id_tipo_identificacion`,`tipo_identificacion`,`eliminar`,`fecha_eliminado`) values (1,'Cedula de ciudadania',NULL,NULL),(2,'NIT',NULL,NULL),(3,'Pasaporte',NULL,NULL),(4,'Codigo DANE',NULL,NULL),(5,'Tarjeta de identidad',NULL,NULL),(6,'Cedula estrangera',NULL,NULL);
+insert  into `tipo_identificaciones`(`id_tipo_identificacion`,`tipo_identificacion`,`eliminar`,`fecha_eliminado`) values (1,'Cedula de ciudadania',0,NULL),(2,'NIT',0,NULL),(3,'Pasaporte',0,NULL),(4,'Codigo DANE',0,NULL),(5,'Tarjeta de identidad',0,NULL),(6,'Cedula estrangera',0,NULL);
 
 /*Table structure for table `tipo_requerimientos` */
 
@@ -250,11 +264,11 @@ CREATE TABLE `tipo_requerimientos` (
   `eliminar` tinyint(1) DEFAULT NULL,
   `fecha_eliminado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_tipo_requerimiento`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tipo_requerimientos` */
 
-insert  into `tipo_requerimientos`(`id_tipo_requerimiento`,`tipo_requerimiento`,`eliminar`,`fecha_eliminado`) values (1,'Incidente(Reporte de fallas)',NULL,NULL),(2,'solicitud(Informacion)',NULL,NULL),(3,'General',NULL,NULL);
+insert  into `tipo_requerimientos`(`id_tipo_requerimiento`,`tipo_requerimiento`,`eliminar`,`fecha_eliminado`) values (1,'Incidente(Reporte de fallas)',0,NULL),(2,'solicitud(Informacion)',0,NULL),(3,'General',0,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
