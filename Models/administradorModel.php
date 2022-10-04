@@ -160,5 +160,72 @@ class administradorModel extends Mysql
     $request_insert=$this->insert($query_insert,$arrData);
     return $request_insert;
   }
+  public function setRequerimiento($tipo_requerimiento, $eliminar, $fecha_eliminado)
+  {
+    $query_insert ="INSERT INTO tipo_requerimientos(tipo_requerimiento,eliminar,fecha_eliminado) VALUES (?,?,?)";
+    $arrData=array ($tipo_requerimiento,$eliminar,$fecha_eliminado);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
+  public function getRequerimineto()
+  {
+    $sql ="SELECT * FROM tipo_requerimientos WHERE eliminar=0";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function updateEliminarTipoRequerimiento($eliminar,$fecha_eliminado,$id_tipo_requerimiento)
+  {
+    $sql ="UPDATE tipo_requerimientos SET eliminar=? ,fecha_eliminado=? where id_tipo_requerimiento=$id_tipo_requerimiento";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificartTipoRequerimiento($tipo_requerimiento, $id_tipo_requerimiento)
+  {
+    $sql ="UPDATE tipo_requerimientos SET tipo_requerimiento=? where id_tipo_requerimiento=$id_tipo_requerimiento";
+    $arrData= array ($tipo_requerimiento);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function setTipoIdentificacion($tipo_identificacion, $eliminar, $fecha_eliminado)
+  {
+    $query_insert ="INSERT INTO tipo_identificaciones(tipo_identificacion,eliminar,fecha_eliminado) VALUES (?,?,?)";
+    $arrData=array ($tipo_identificacion,$eliminar,$fecha_eliminado);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
+  public function getTipoIdentificacion()
+  {
+    $sql ="SELECT * FROM tipo_identificaciones WHERE eliminar=0";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function updateEliminarTipoIdentificacion($eliminar,$fecha_eliminado,$id_tipo_identificacion)
+  {
+    $sql ="UPDATE tipo_identificaciones SET eliminar=? ,fecha_eliminado=? where id_tipo_identificacion=$id_tipo_identificacion";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificartTipoIdentificacion($tipo_identificacion, $id_tipo_identificacion)
+  {
+    $sql ="UPDATE tipo_identificaciones SET tipo_identificacion=? where id_tipo_identificacion=$id_tipo_identificacion";
+    $arrData= array ($tipo_identificacion);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+
+
+
+
+  public function setPrueba($valor)
+  {
+    // $query_insert ="INSERT INTO prueba(datos_prueba) VALUES ('".$valor."')";
+    // $arrData=array ($valor);
+    // $request_insert=$this->insert($query_insert,$arrData);
+    // return $request_insert;
+    $_GRABAR_SQL = "INSERT INTO prueba (valores) VALUES ('".$valor."')"; 
+    return $$_GRABAR_SQL;
+  }
 }
 ?>

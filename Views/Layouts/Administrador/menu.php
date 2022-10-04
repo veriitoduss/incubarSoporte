@@ -4,7 +4,7 @@
       <div class="topbar-left" style="background-color:white ;">
         <div class="text-center">
           <a href="<?php echo base_url(); ?>administrador" class="logo-sm"><img src="<?php echo media(); ?>images/logo-pagina.png" height="28"></a>
-          <a href="<?php echo base_url(); ?>administrador" class="logo" style="color:black!important"><img src="<?php echo media(); ?>images/logo-pagina.png" height="36" > Admin</a>
+          <a href="<?php echo base_url(); ?>administrador" class="logo" style="color:black!important"><img src="<?php echo media(); ?>images/logo-pagina.png" height="36"> Admin</a>
         </div>
       </div>
       <div class="navbar navbar-default" role="navigation">
@@ -21,15 +21,17 @@
         <div id="sidebar-menu">
           <ul>
             <li class="has_sub"> <a class="waves-effect"><i class="fa-solid fa-circle-plus"></i> <span> Adiciones </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
-              <ul class="list-unstyled" style="text-align:center!important">
-                <p style="color:#F9BF00;margin-top:15px!important;border-bottom: 0.2px solid #F9BF00 !important;"><b>Usuarios</b></p>
+              <ul class="list-unstyled">
+                <p class="separadoresMenu">Usuarios</p>
                 <li><a href="<?php echo base_url(); ?>administrador/rol"><i class="fa-solid fa-user-tag"></i>Roles</a></li>
                 <li><a href="<?php echo base_url(); ?>administrador/agente"><i class="fa-solid fa-user-tie"></i>Agentes</a></li>
-                <p style="color:#F9BF00;margin-top:15px!important"><b>Caracteristicas Ticket</b></p>
+                <p class="separadoresMenu">Parámetros del Ticket</p>
                 <li><a href="<?php echo base_url(); ?>administrador/categoria"><i class="fa-solid fa-list-ol"></i>Categorias</a></li>
                 <li><a href="<?php echo base_url(); ?>administrador/proyecto"><i class="fa-solid fa-building"></i>Proyectos</a></li>
                 <li><a href="<?php echo base_url(); ?>administrador/cliente"><i class="fa-solid fa-user-large"></i>Clientes</a></li>
                 <li><a href="<?php echo base_url(); ?>administrador/prioridades"><i class="fa-solid fa-tags"></i>Prioridades</a></li>
+                <li><a href="<?php echo base_url(); ?>administrador/requerimiento"><i class="fa-solid fa-list-check"></i>Requerimientos</a></li>
+                <li><a href="<?php echo base_url(); ?>administrador/tipo_identificacion"><i class="fa-solid fa-address-card"></i>Tipo identificaciones</a></li>
               </ul>
             </li>
             <li> <a href="<?php echo base_url(); ?>lista" class="waves-effect"><i class="fa-solid fa-arrow-rotate-left"></i><span>Volver</span></a></li>

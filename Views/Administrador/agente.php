@@ -36,8 +36,8 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                     <div class="col-sm-4">
                       <div class="form-group" style="text-align: left;" style="text-align: left;">
                         <label style="padding-bottom:10px;font-size:15px" for="nombre_agente">Nombre(s) y Apellidos(s) del agente</label>
-                        <span style="display: block; padding-bottom:20px;font-size:12px">Por favor ingrese su nombre(s) y apellido(s) del agente</span>
-                        <input type="text" id="nombre_agente" require name="nombre_agente" class="form-control" id="exampleInputEmail1">
+                        <span style="display: block; padding-bottom:20px;font-size:12px">Por favor ingrese el nombre(s) y apellido(s) del agente</span>
+                        <input required type="text" id="nombre_agente" require name="nombre_agente" class="form-control" id="exampleInputEmail1">
                         <input type="hidden" name="eliminar" id="eliminar" value="0">
                         <input type="hidden" name="fecha_eliminado" id="fecha_eliminado" value="0">
 
@@ -46,9 +46,9 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                     <div class="col-sm-4">
                       <div class="form-group" style="text-align: left;">
                         <div class="form-group" style="text-align: left;" style="text-align: left;">
-                          <label style="padding-bottom:10px;font-size:15px" for="correo_agente">Correo electronico</label>
-                          <span style="display: block; padding-bottom:20px;font-size:12px">Porfavor ingrese el correo electronico</span>
-                          <input type="email" id="correo_agente" require name="correo_agente" class="form-control" id="exampleInputEmail1">
+                          <label style="padding-bottom:10px;font-size:15px" for="correo_agente">Correo electrónico</label>
+                          <span style="display: block; padding-bottom:20px;font-size:12px">Por favor ingrese el correo electrónico</span>
+                          <input required type="email" id="correo_agente" require name="correo_agente" class="form-control" id="exampleInputEmail1">
                         </div>
                       </div>
                     </div>
@@ -56,7 +56,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                       <div class="form-group" style="text-align: left;">
                         <label style="padding-bottom:10px;font-size:15px" for="id_rol">Rol</label>
                         <span style="display: block; padding-bottom:20px;font-size:12px">Por favor seleccionar el rol</span>
-                        <select class="form-control" name="id_rol" id="id_rol" require>
+                        <select required class="form-control" name="id_rol" id="id_rol" require>
                           <option></option>
                           <?php
                           foreach ($data['roles'] as $rol) { ?>

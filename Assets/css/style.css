@@ -866,6 +866,14 @@ a:hover {
     color: red!important;
     cursor:pointer;
     }
+.separadoresMenu{
+    color:#F9BF00;margin:auto;
+    margin-top:15px!important;
+    border-bottom: 0.2px solid #F9BF00 !important;
+    width: 80%;
+    padding-bottom:10px;
+    text-align:center!important;
+}
 .panel-body .buttonEditar{
     color: blue!important;
     cursor:pointer;
@@ -3510,7 +3518,7 @@ input.search-bar:-ms-input-placeholder {
 .side-menu {
     bottom: 0;
     top: 0;
-    width: 200px;
+    width: 250px;
     z-index: 2
 }
 
@@ -3727,7 +3735,7 @@ body.fixed-left .side-menu.left {
     left: 190px;
     margin-top: -36px;
     position: absolute;
-    width: 190px
+    width: 190px;
 }
 
 #wrapper.enlarged .left.side-menu #sidebar-menu ul ul li>a span.pull-right {

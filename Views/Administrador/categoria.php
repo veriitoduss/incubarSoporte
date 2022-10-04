@@ -12,7 +12,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
             <ol class="breadcrumb pull-right">
               <li><a href="<?php echo base_url(); ?>administrador"><?php echo $data['administrador'] ?></a></li>
               <li><a href="#">Adiciones</a></li>
-              <li class="active">Categoria</li>
+              <li class="active">Categoría</li>
             </ol>
             <div class="clearfix"></div>
           </div>
@@ -22,14 +22,14 @@ include "Views/Layouts/Administrador/menu.php"; ?>
         <div class="col-md-12">
           <div class="panel panel-primary text-center">
             <div class="panel-heading">
-              <h4 class="panel-title">Agregar Categoria</h4>
+              <h4 class="panel-title">Agregar Categoría</h4>
             </div>
             <div class="panel-body">
               <form role="form" class="formulariocategoria" id="formularioAgente" method="post" action="<?php base_url(); ?>AgregarCategoria">
                 <div class="form-group" style="text-align: left;" style="text-align: left;">
-                  <label style="padding-bottom:10px;font-size:15px" for="nombre_categoria">Nombre de la categoria</label>
-                  <span style="display: block; padding-bottom:20px;font-size:12px">Inserte el nombre de la categoría. Por favor, asegúrese de que el nombre de la categoría que está ingresando no debe existir ya.</span>
-                  <input type="text" id="nombre_categoria" name="nombre_categoria" class="form-control" id="exampleInputEmail1">
+                  <label style="padding-bottom:10px;font-size:15px" for="nombre_categoria">Nombre de la categoría</label>
+                  <span style="display: block; padding-bottom:20px;font-size:12px">Inserte el nombre de la categoría. Por favor, Asegúrese que el nombre de la categoría que está ingresando no exista.</span>
+                  <input required type="text" id="nombre_categoria" name="nombre_categoria" class="form-control">
                   <input type="hidden" name="eliminar" id="eliminar" value="0">
                   <input type="hidden" name="fecha_eliminado" id="fecha_eliminado" value="0">
 
@@ -44,7 +44,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
         <div class="col-md-12">
           <div class="panel panel-primary text-center">
             <div class="panel-heading">
-              <h4 class="panel-title">Categorias</h4>
+              <h4 class="panel-title">Categorías</h4>
             </div>
             <div class="panel-body">
               <?php

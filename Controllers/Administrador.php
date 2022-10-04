@@ -46,15 +46,15 @@ class Administrador extends Controllers
     $id_rol = $_POST['id_rol'];
     $eliminar = $_POST['eliminar'];
     $fecha_eliminado = $_POST['fecha_eliminado'];
-    $this->model->setAgente($nombre_agente, $correo_agente, $usuario_agente, $contrasena_agente, $id_rol,$eliminar,$fecha_eliminado);
+    $this->model->setAgente($nombre_agente, $correo_agente, $usuario_agente, $contrasena_agente, $id_rol, $eliminar, $fecha_eliminado);
     header("Location: " . base_url() . "administrador/agente");
   }
   public function EliminarAgente()
   {
     $eliminar = $_POST['eliminar'];
-    $fecha_eliminado =date("Y-m-d H:i:s");
+    $fecha_eliminado = date("Y-m-d H:i:s");
     $id_agente = $_POST['id_agente'];
-    $this->model->updateEliminarAgente($eliminar,$fecha_eliminado,$id_agente);
+    $this->model->updateEliminarAgente($eliminar, $fecha_eliminado, $id_agente);
     header("Location: " . base_url() . "administrador/agente");
   }
   public function ModificarAgente()
@@ -63,7 +63,7 @@ class Administrador extends Controllers
     $correo_agente = $_POST['correo_agente'];
     $id_rol = $_POST['id_rol'];
     $id_agente = $_POST['id_agente'];
-    $this->model->updateModificarAgente($nombre_agente,$correo_agente,$id_rol,$id_agente);
+    $this->model->updateModificarAgente($nombre_agente, $correo_agente, $id_rol, $id_agente);
     header("Location: " . base_url() . "administrador/agente");
   }
 
@@ -82,22 +82,22 @@ class Administrador extends Controllers
     $nombre_categoria = $_POST['nombre_categoria'];
     $eliminar = $_POST['eliminar'];
     $fecha_eliminado = $_POST['fecha_eliminado'];
-    $this->model->setCategoria($nombre_categoria,$eliminar,$fecha_eliminado);
+    $this->model->setCategoria($nombre_categoria, $eliminar, $fecha_eliminado);
     header("Location: " . base_url() . "administrador/categoria");
   }
   public function Eliminarcategoria()
   {
     $eliminar = $_POST['eliminar'];
-    $fecha_eliminado =date("Y-m-d H:i:s");
+    $fecha_eliminado = date("Y-m-d H:i:s");
     $id_categoria = $_POST['id_categoria'];
-    $this->model->updateEliminarCategoria($eliminar,$fecha_eliminado,$id_categoria);
+    $this->model->updateEliminarCategoria($eliminar, $fecha_eliminado, $id_categoria);
     header("Location: " . base_url() . "administrador/categoria");
   }
   public function ModificarCategoria()
   {
     $nombre_categoria = $_POST['nombre_categoria'];
     $id_categoria = $_POST['id_categoria'];
-    $this->model->updateModificarCategoria($nombre_categoria,$id_categoria);
+    $this->model->updateModificarCategoria($nombre_categoria, $id_categoria);
     header("Location: " . base_url() . "administrador/categoria");
   }
 
@@ -148,15 +148,15 @@ class Administrador extends Controllers
     $id_proyecto = $_POST['id_proyecto'];
     $eliminar = $_POST['eliminar'];
     $fecha_eliminado = $_POST['fecha_eliminado'];
-    $this->model->setPrioridad($nombre_prioridad, $id_proyecto,$eliminar,$fecha_eliminado);
+    $this->model->setPrioridad($nombre_prioridad, $id_proyecto, $eliminar, $fecha_eliminado);
     header("Location: " . base_url() . "administrador/prioridades");
   }
   public function EliminarPrioridad()
   {
     $eliminar = $_POST['eliminar'];
-    $fecha_eliminado =date("Y-m-d H:i:s");
+    $fecha_eliminado = date("Y-m-d H:i:s");
     $id_prioridad = $_POST['id_prioridad'];
-    $this->model->updateEliminarPrioridad($eliminar,$fecha_eliminado,$id_prioridad);
+    $this->model->updateEliminarPrioridad($eliminar, $fecha_eliminado, $id_prioridad);
     header("Location: " . base_url() . "administrador/prioridades");
   }
   public function ModificarPrioridad()
@@ -164,7 +164,7 @@ class Administrador extends Controllers
     $nombre_prioridad = $_POST['nombre_prioridad'];
     $id_proyecto = $_POST['id_proyecto'];
     $id_prioridad = $_POST['id_prioridad'];
-    $this->model->updateModificarPrioridad($nombre_prioridad,$id_proyecto,$id_prioridad);
+    $this->model->updateModificarPrioridad($nombre_prioridad, $id_proyecto, $id_prioridad);
     header("Location: " . base_url() . "administrador/prioridades");
   }
 
@@ -184,15 +184,15 @@ class Administrador extends Controllers
     $identificador_proyecto = $_POST['identificador_proyecto'];
     $eliminar = $_POST['eliminar'];
     $fecha_eliminado = $_POST['fecha_eliminado'];
-    $this->model->setProyecto($nombre_proyecto, $identificador_proyecto,$eliminar,$fecha_eliminado);
+    $this->model->setProyecto($nombre_proyecto, $identificador_proyecto, $eliminar, $fecha_eliminado);
     header("Location: " . base_url() . "administrador/proyecto");
   }
   public function EliminarProyecto()
   {
     $eliminar = $_POST['eliminar'];
-    $fecha_eliminado =date("Y-m-d H:i:s");
+    $fecha_eliminado = date("Y-m-d H:i:s");
     $id_proyecto = $_POST['id_proyecto'];
-    $this->model->updateEliminarProyecto($eliminar,$fecha_eliminado,$id_proyecto);
+    $this->model->updateEliminarProyecto($eliminar, $fecha_eliminado, $id_proyecto);
     header("Location: " . base_url() . "administrador/proyecto");
   }
   public function ModificarProyecto()
@@ -200,7 +200,7 @@ class Administrador extends Controllers
     $nombre_proyecto = $_POST['nombre_proyecto'];
     $identificador_proyecto = $_POST['identificador_proyecto'];
     $id_proyecto = $_POST['id_proyecto'];
-    $this->model->updateModificarProyecto($nombre_proyecto,$identificador_proyecto,$id_proyecto);
+    $this->model->updateModificarProyecto($nombre_proyecto, $identificador_proyecto, $id_proyecto);
     header("Location: " . base_url() . "administrador/proyecto");
   }
 
@@ -222,5 +222,87 @@ class Administrador extends Controllers
     $this->model->setRol($nombre_rol);
     // $this->model->setPermiso($id_permiso);
     header("Location: " . base_url() . "administrador/rol");
+  }
+
+  // requerimientos
+  public function requerimiento()
+  {
+    $data['administrador'] = "Administrador";
+    $data['vista'] = "Requerimientos";
+    $data['tag_page'] = "Soporte - Incubarhuila";
+    $data['titulo'] = "Requerimientos";
+    $data['requerimientos'] = $this->model->getRequerimineto();
+    $this->views->getView($this, "requerimiento", $data);
+  }
+  public function AgregarRequerimiento()
+  {
+    $tipo_requerimiento = $_POST['tipo_requerimiento'];
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = $_POST['fecha_eliminado'];
+    $this->model->setRequerimiento($tipo_requerimiento, $eliminar, $fecha_eliminado);
+    header("Location: " . base_url() . "administrador/requerimiento");
+  }
+  public function EliminarRequerimiento()
+  {
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = date("Y-m-d H:i:s");
+    $id_tipo_requerimiento = $_POST['id_tipo_requerimiento'];
+    $this->model->updateEliminarTipoRequerimiento($eliminar, $fecha_eliminado, $id_tipo_requerimiento);
+    header("Location: " . base_url() . "administrador/requerimiento");
+  }
+  public function ModificarRequerimiento()
+  {
+    $tipo_requerimiento = $_POST['tipo_requerimiento'];
+    $id_tipo_requerimiento = $_POST['id_tipo_requerimiento'];
+    $this->model->updateModificartTipoRequerimiento($tipo_requerimiento, $id_tipo_requerimiento);
+    header("Location: " . base_url() . "administrador/requerimiento");
+  }
+
+  // identificaciones
+  public function tipo_identificacion()
+  {
+    $data['administrador'] = "Administrador";
+    $data['vista'] = "Tipo identificacion";
+    $data['tag_page'] = "Soporte - Incubarhuila";
+    $data['titulo'] = "Tipo identificacion";
+    $data['identificaciones'] = $this->model->getTipoIdentificacion();
+    $this->views->getView($this, "tipo_identificacion", $data);
+  }
+  public function AgregarTipoIdentificacion()
+  {
+    $tipo_identificacion = $_POST['tipo_identificacion'];
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = $_POST['fecha_eliminado'];
+    $this->model->setTipoIdentificacion($tipo_identificacion, $eliminar, $fecha_eliminado);
+    header("Location: " . base_url() . "administrador/tipo_identificacion");
+  }
+  public function EliminarTipoIdentificacion()
+  {
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = date("Y-m-d H:i:s");
+    $id_tipo_identificacion = $_POST['id_tipo_identificacion'];
+    $this->model->updateEliminarTipoIdentificacion($eliminar, $fecha_eliminado, $id_tipo_identificacion);
+    header("Location: " . base_url() . "administrador/tipo_identificacion");
+  }
+  public function ModificarTipoIdentificacion()
+  {
+    $tipo_identificacion = $_POST['tipo_identificacion'];
+    $id_tipo_identificacion = $_POST['id_tipo_identificacion'];
+    $this->model->updateModificartTipoIdentificacion($tipo_identificacion, $id_tipo_identificacion);
+    header("Location: " . base_url() . "administrador/tipo_identificacion");
+  }
+
+
+  public function AgregarPrueba()
+  {
+    $valor = $_POST["valores"];
+    $valore = chop($valor);
+    $valores = nl2br($valore);
+    $array_datos = explode("<br />", $valores);
+    foreach ($array_datos as $valor)
+    {
+      print_r ($valor);
+      $this->model->setPrueba($valor);
+    }
   }
 }

@@ -30,7 +30,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                   <div class="form-group" style="text-align: left;" style="text-align: left;">
                     <label style="padding-bottom:10px;font-size:15px" for="nombre_proyecto">Nombre del proyecto</label>
                     <span style="display: block; padding-bottom:20px;font-size:12px">Inserte el nombre del proyecto</span>
-                    <input type="text" id="nombre_proyecto" name="nombre_proyecto" class="form-control" id="exampleInputEmail1">
+                    <input required type="text" id="nombre_proyecto" name="nombre_proyecto" class="form-control" id="exampleInputEmail1">
                     <input type="hidden" name="eliminar" id="eliminar" value="0">
                     <input type="hidden" name="fecha_eliminado" id="fecha_eliminado" value="0">
                   </div>
@@ -38,8 +38,8 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                 <div class="col-sm-6">
                   <div class="form-group" style="text-align: left;">
                     <label style="padding-bottom:10px;font-size:15px" for="identificador_proyecto">Identificador del proyecto</label>
-                    <span style="display: block; padding-bottom:20px;font-size:12px">Inserte el identificador del proyecto. Recuerde que el identificador es en mayuscula</span>
-                    <input type="text" id="identificador_proyecto" name="identificador_proyecto" class="form-control" id="exampleInputEmail1">
+                    <span style="display: block; padding-bottom:20px;font-size:12px">Inserte el identificador del proyecto. Recuerde que el identificador es en mayúscula</span>
+                    <input required type="text" id="identificador_proyecto" name="identificador_proyecto" class="form-control" id="exampleInputEmail1">
                   </div>
                 </div>
                 <button type="submit" class="btn btn-dark waves-effect waves-light">Agregar</button>

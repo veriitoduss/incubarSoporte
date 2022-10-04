@@ -31,7 +31,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                   <div class="form-group" style="text-align: left;" style="text-align: left;">
                     <label style="padding-bottom:10px;font-size:15px" for="nombre_prioridad">Nombre de la prioridad</label>
                     <span style="display: block; padding-bottom:20px;font-size:12px">Inserte el nombre de la prioridad</span>
-                    <input type="text" id="nombre_prioridad" name="nombre_prioridad" class="form-control" id="exampleInputEmail1">
+                    <input required type="text" id="nombre_prioridad" name="nombre_prioridad" class="form-control" id="exampleInputEmail1">
                     <input type="hidden" name="eliminar" id="eliminar" value="0">
                     <input type="hidden" name="fecha_eliminado" id="fecha_eliminado" value="0">
                   </div>
@@ -39,8 +39,8 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                 <div class="col-sm-6">
                   <div class="form-group" style="text-align: left;">
                     <label style="padding-bottom:10px;font-size:15px" for="exampleInputPassword1">Proyecto</label>
-                    <span style="display: block; padding-bottom:20px;font-size:12px">Porfavor seleccion el proyecto relacionado</span>
-                    <select class="form-control" name="id_proyecto" id="id_proyecto">
+                    <span style="display: block; padding-bottom:20px;font-size:12px">Por favor seleccione el proyecto relacionado</span>
+                    <select required class="form-control" name="id_proyecto" id="id_proyecto">
                       <option></option>
                       <?php
                       foreach ($data['proyectos'] as $proyecto) { ?>
