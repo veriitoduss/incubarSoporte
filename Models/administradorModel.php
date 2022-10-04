@@ -34,42 +34,84 @@ class administradorModel extends Mysql
   // }
   public function getAgente()
   {
-    $sql ="SELECT a.nombre_agente, a.correo_agente, r.nombre_rol FROM agentes a, roles r WHERE a.id_rol=r.id_rol";
+    $sql ="SELECT a.id_agente,a.nombre_agente, a.correo_agente,a.usuario_agente, r.nombre_rol FROM agentes a, roles r WHERE a.id_rol=r.id_rol AND a.eliminar=0";
     $request=$this->select_all($sql);
     return $request;
   }
-  public function setAgente(string $nombre_agente,string $correo_agente, string $usuario_agente,string $contrasena_agente,int $id_rol)
+  public function setAgente(string $nombre_agente,string $correo_agente, string $usuario_agente,string $contrasena_agente,int $id_rol,$eliminar,$fecha_eliminado)
   {
-    $query_insert ="INSERT INTO agentes(nombre_agente,correo_agente,usuario_agente,contrasena_agente,id_rol) VALUES (?,?,?,?,?)";
-    $arrData=array ($nombre_agente,$correo_agente,$usuario_agente,$contrasena_agente,$id_rol);
+    $query_insert ="INSERT INTO agentes(nombre_agente,correo_agente,usuario_agente,contrasena_agente,id_rol,eliminar,fecha_eliminado) VALUES (?,?,?,?,?,?,?)";
+    $arrData=array ($nombre_agente,$correo_agente,$usuario_agente,$contrasena_agente,$id_rol,$eliminar,$fecha_eliminado);
     $request_insert=$this->insert($query_insert,$arrData);
     return $request_insert;
   }
-  public function setCategoria(string $nombre_categoria)
+  public function updateEliminarAgente($eliminar,$fecha_eliminado,$id_agente)
   {
-    $query_insert ="INSERT INTO categorias(nombre_categoria) VALUES (?)";
-    $arrData=array ($nombre_categoria);
+    $sql ="UPDATE agentes SET eliminar=? ,fecha_eliminado=? where id_agente=$id_agente";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarAgente($nombre_agente,$correo_agente,$id_rol,$id_agente)
+  {
+    $sql ="UPDATE agentes SET nombre_agente=?,correo_agente=?,id_rol=? where id_agente=$id_agente";
+    $arrData= array ($nombre_agente,$correo_agente,$id_rol);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function setCategoria(string $nombre_categoria,$eliminar,$fecha_eliminado)
+  {
+    $query_insert ="INSERT INTO categorias(nombre_categoria,eliminar,fecha_eliminado) VALUES (?,?,?)";
+    $arrData=array ($nombre_categoria,$eliminar,$fecha_eliminado);
     $request_insert=$this->insert($query_insert,$arrData);
     return $request_insert;
   }
   public function getCategoria()
   {
-    $sql ="SELECT * FROM categorias";
+    $sql ="SELECT * FROM categorias where eliminar=0";
     $request=$this->select_all($sql);
     return $request;
   }
-
-  public function setProyecto(string $nombre_proyecto,string $identificador_proyecto)
+  public function updateEliminarCategoria($eliminar,$fecha_eliminado,$id_categoria)
   {
-    $query_insert ="INSERT INTO proyectos(nombre_proyecto,identificador_proyecto) VALUES (?,?)";
-    $arrData=array ($nombre_proyecto,$identificador_proyecto);
+    $sql ="UPDATE categorias SET eliminar=? ,fecha_eliminado=? where id_categoria=$id_categoria";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarCategoria($nombre_categoria,$id_categoria)
+  {
+    $sql ="UPDATE categorias SET nombre_categoria=? where id_categoria=$id_categoria";
+    $arrData= array ($nombre_categoria);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+
+  public function setProyecto(string $nombre_proyecto,string $identificador_proyecto,$eliminar,$fecha_eliminado)
+  {
+    $query_insert ="INSERT INTO proyectos(nombre_proyecto,identificador_proyecto,eliminar,fecha_eliminado) VALUES (?,?,?,?)";
+    $arrData=array ($nombre_proyecto,$identificador_proyecto,$eliminar,$fecha_eliminado);
     $request_insert=$this->insert($query_insert,$arrData);
     return $request_insert;
   }
   public function getProyectos()
   {
-    $sql ="SELECT * FROM proyectos";
+    $sql ="SELECT * FROM proyectos WHERE eliminar=0";
     $request=$this->select_all($sql);
+    return $request;
+  }
+  public function updateEliminarProyecto($eliminar,$fecha_eliminado,$id_proyecto)
+  {
+    $sql ="UPDATE proyectos SET eliminar=? ,fecha_eliminado=? where id_proyecto=$id_proyecto";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarProyecto($nombre_proyecto,$identificador_proyecto,$id_proyecto)
+  {
+    $sql ="UPDATE proyectos SET nombre_proyecto=? ,identificador_proyecto=? where id_proyecto=$id_proyecto";
+    $arrData= array ($nombre_proyecto,$identificador_proyecto);
+    $request=$this->update($sql,$arrData);
     return $request;
   }
   // public function getProyectosID($id_proyecto)
@@ -97,13 +139,20 @@ class administradorModel extends Mysql
     $request_insert=$this->insert($query_insert,$arrData,$eliminar,$fecha_eliminado);
     return $request_insert;
   }
-  //   public function updatePrioridad($eliminar,$fecha_eliminado)
-  // {
-  //   $sql ="UPDATE agentes SET nombre_agente=? ,correo_agente=?,usuario_agente=?,contrasena_agente=?,id_rol=? where id_agente=$id_agente";
-  //   $arrData= array ($nombre_agente,$correo_agente,$usuario_agente,$contrasena_agente,$id_rol);
-  //   $request=$this->update($sql,$arrData);
-  //   return $request;
-  // }
+    public function updateEliminarPrioridad($eliminar,$fecha_eliminado,$id_prioridad)
+  {
+    $sql ="UPDATE prioridades SET eliminar=? ,fecha_eliminado=? where id_prioridad=$id_prioridad";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarPrioridad($nombre_prioridad,$id_proyecto,$id_prioridad)
+  {
+    $sql ="UPDATE prioridades SET nombre_prioridad=? ,id_proyecto=? where id_prioridad=$id_prioridad";
+    $arrData= array ($nombre_prioridad,$id_proyecto);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
   public function setCliente($valor)
   {
     $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto) VALUES ('$valor')";
