@@ -1,6 +1,6 @@
 /*
 SQLyog Community v8.71 
-MySQL - 5.5.5-10.4.24-MariaDB : Database - incubarsoporte
+MySQL - 5.5.5-10.4.20-MariaDB : Database - incubarsoporte
 *********************************************************************
 */
 
@@ -76,11 +76,11 @@ CREATE TABLE `clientes` (
   `eliminar` int(11) DEFAULT NULL,
   `fecha_eliminado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `clientes` */
 
-insert  into `clientes`(`id_cliente`,`nombre_cliente`,`id_proyecto`,`eliminar`,`fecha_eliminado`) values (1,'promocion social',1,NULL,NULL),(2,'la escuelita',1,NULL,NULL),(3,'alcaldia de neiva',2,NULL,NULL),(4,'alcaldia del huila',2,NULL,NULL);
+insert  into `clientes`(`id_cliente`,`nombre_cliente`,`id_proyecto`,`eliminar`,`fecha_eliminado`) values (1,'promocion social',1,0,NULL),(2,'la escuelita',1,0,NULL),(3,'alcaldia de neiva',2,0,NULL),(4,'alcaldia del huila',2,0,NULL),(13,'ana',0,NULL,NULL),(14,'\r\nmilena',0,NULL,NULL),(15,'\r\ndussan',0,NULL,NULL),(16,'sws',0,NULL,NULL);
 
 /*Table structure for table `estados` */
 
@@ -186,13 +186,13 @@ DROP TABLE IF EXISTS `prueba`;
 
 CREATE TABLE `prueba` (
   `id_prueba` int(11) NOT NULL AUTO_INCREMENT,
-  `datos_prueba` double DEFAULT NULL,
+  `datos_prueba` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_prueba`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `prueba` */
 
-insert  into `prueba`(`id_prueba`,`datos_prueba`) values (13,0),(14,0),(15,0),(16,0),(17,0),(18,0),(19,0),(20,0),(21,0),(22,0),(23,0),(24,0),(25,0),(26,0),(27,0),(28,0),(29,0),(30,0),(31,0),(32,0),(33,0),(34,0);
+insert  into `prueba`(`id_prueba`,`datos_prueba`) values (53,'hola'),(54,'\r\nuno'),(55,'\r\ntre'),(56,'\r\ncinco'),(57,'rojjo'),(58,'\r\namarillo'),(59,'\r\nvrde');
 
 /*Table structure for table `roles` */
 

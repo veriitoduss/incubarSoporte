@@ -126,6 +126,13 @@ class administradorModel extends Mysql
     $request=$this->select_all($sql);
     return $request;
   }
+  public function setClientes($clientes,$id_proyecto)
+  {
+    $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto) VALUES (?,?)";
+    $arrData=array ($clientes,$id_proyecto);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
   public function getPrioridades()
   {
     $sql ="SELECT p.id_proyecto,pr.id_prioridad,pr.nombre_prioridad, p.nombre_proyecto FROM prioridades pr, proyectos p WHERE pr.id_proyecto=p.id_proyecto AND pr.eliminar=0";
@@ -217,15 +224,19 @@ class administradorModel extends Mysql
 
 
 
-
+  public function getprueba()
+  {
+    $sql ="SELECT * FROM prueba";
+    $request=$this->select_all($sql);
+    return $request;
+  }
   public function setPrueba($valor)
   {
-    // $query_insert ="INSERT INTO prueba(datos_prueba) VALUES ('".$valor."')";
-    // $arrData=array ($valor);
-    // $request_insert=$this->insert($query_insert,$arrData);
-    // return $request_insert;
-    $_GRABAR_SQL = "INSERT INTO prueba (valores) VALUES ('".$valor."')"; 
-    return $$_GRABAR_SQL;
+    $query_insert ="INSERT INTO prueba(datos_prueba) VALUES (?)";
+    $arrData=array ($valor);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
   }
+  
 }
 ?>

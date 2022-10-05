@@ -1,5 +1,5 @@
 <?php
-// const BASE_URL="http://localhost/incubarSoporte/";
+// const BASE_URL="https://www.incubarhuila.co/incubarSoporte/";
 const BASE_URL="http://localhost/incubarSoporte/";
 // zona horaria
 date_default_timezone_set('America/Bogota');

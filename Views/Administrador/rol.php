@@ -70,7 +70,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                   <div class="col-md-4">
                     <div class="container" style="width: 300px;">
                       <label class="option_item" title="<?php echo $permiso['permiso']; ?>">
-                        <input type="checkbox" class="checkbox" value="<?php echo $permiso['id_permiso']; ?>" name="id_permiso" id="id_permiso" style="opacity: 0;">
+                        <input type="checkbox" class="checkbox" value="<?php echo $permiso['id_permiso']; ?>" name="id_permiso[]" id="id_permiso" style="opacity: 0;">
                         <div class="option_inner">
                           <div class="tickmark"></div>
                           <div class="name"><?php echo $permiso['descripcion_permiso']; ?></div>

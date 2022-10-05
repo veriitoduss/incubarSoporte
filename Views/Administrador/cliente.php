@@ -31,7 +31,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                   <h4 class="panel-title">Agregar cliente</h4>
                 </div>
                 <div class="panel-body">
-                  <!-- <form role="form" class="formularioPrioridad" id="formularioAgente" method="post" action="<?php base_url(); ?>AgregarClientes">
+                  <form role="form" class="formularioPrioridad" id="formularioAgente" method="post" action="<?php base_url(); ?>AgregarClientes">
                     <div class="col-sm-6">
                       <div class="form-group" style="text-align: left;">
                         <label style="padding-bottom:10px;font-size:15px" for="id_proyecto">Proyecto</label>
@@ -50,13 +50,13 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                       <div class="form-group" style="text-align: left;" style="text-align: left;">
                         <label style="padding-bottom:10px;font-size:15px" for="nombre_cliente">Nombre del cliente</label>
                         <span style="display: block; padding-bottom:20px;font-size:12px">Por favor ingrese el nombre del cliente</span>
-                        <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
-                        <input type="text" id="nombre_cliente[]" required name="nombre_cliente[]" class="form-control" id="exampleInputEmail1">
+                        <p><textarea name="nombre_cliente" cols="90" required class="form-control"></textarea></p>
+                        <!-- <input type="text" id="nombre_cliente[]" required name="nombre_cliente[]" class="form-control" id="exampleInputEmail1"> -->
                       </div>
                     </div>
                     <button type="submit" class="btn btn-dark waves-effect waves-light">Agregar</button>
-                  </form> -->
-                  <form role="form" class="formularioPrioridad" id="formularioAgente" method="post" action="<?php base_url(); ?>AgregarPrueba">
+                  </form>
+                  <!-- <form role="form" class="formularioPrioridad" id="formularioAgente" method="post" action="<?php base_url(); ?>AgregarPrueba">
                     <div class="col-sm-6">
                       <div class="form-group" style="text-align: left;" style="text-align: left;">
                         <label style="padding-bottom:10px;font-size:15px" for="nombre_cliente">Nombre del cliente</label>
@@ -65,7 +65,7 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-dark waves-effect waves-light">Agregar</button>
-                  </form>
+                  </form> -->
                 </div>
               </section>
               <section id="ListarAgentes">
@@ -73,6 +73,11 @@ include "Views/Layouts/Administrador/menu.php"; ?>
                   <h4 class="panel-title">Cliente</h4>
                 </div>
                 <div class="panel-body">
+                <?php
+                      foreach ($data['pruebas'] as $prueba) { ?>
+                      <?php echo $prueba['datos_prueba']; ?>
+                      <?php }
+                      ?>
                   <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                       <tr>

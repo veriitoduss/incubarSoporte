@@ -110,21 +110,25 @@ class Administrador extends Controllers
     $data['tag_page'] = "Soporte - Incubarhuila";
     $data['proyectos'] = $this->model->getProyectos();
     $data['cliente'] = $this->model->getCliente();
+    $data['pruebas'] = $this->model->getprueba();
     $this->views->getView($this, "cliente", $data);
   }
   public function AgregarClientes()
   {
-    $nombre_cliente = $_POST['nombre_cliente'];
-    $id_proyecto = $_POST['id_proyecto'];
-    while (true) {
-      $nombre_cliente = current($nombre_cliente);
-      $id_proyecto = current($id_proyecto);
-      $cliente = (($nombre_cliente !== false) ? $nombre_cliente : ", &nbsp;");
-      $proyecto = (($id_proyecto !== false) ? $id_proyecto : ", &nbsp;");
-      $valores = '(' . $cliente . ',"' . $proyecto . '"),';
-      $valor = substr($valores, 0, -1);
+    $nombre = $_POST["nombre_cliente"];
+    $id_proyecto = $_POST["id_proyecto"];
+    $nombreCliente = chop($nombre);
+    $nombre_cliente = nl2br($nombreCliente);
+    $array_datos = explode("<br />", $nombre_cliente);
+    $numero = count($array_datos); 
+    for ($i=0; $i==$numero ; $i++) { 
+      $uno=1;
+    } print_r ($uno);
+    foreach ($array_datos as $clientes)
+    {
+      // print_r ($valor);
+      // $this->model->setClientes($clientes,$id_proyecto);
     }
-    echo $valor;
     // $this->model->setCliente($valor);
     // header("Location: ".base_url()."administrador/cliente");
   }
@@ -301,7 +305,7 @@ class Administrador extends Controllers
     $array_datos = explode("<br />", $valores);
     foreach ($array_datos as $valor)
     {
-      print_r ($valor);
+      // print_r ($valor);
       $this->model->setPrueba($valor);
     }
   }
