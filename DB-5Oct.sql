@@ -1,6 +1,6 @@
 /*
 SQLyog Community v8.71 
-MySQL - 5.5.5-10.4.20-MariaDB : Database - incubarsoporte
+MySQL - 5.5.5-10.4.24-MariaDB : Database - incubarsoporte
 *********************************************************************
 */
 
@@ -34,7 +34,7 @@ CREATE TABLE `agentes` (
 
 /*Data for the table `agentes` */
 
-insert  into `agentes`(`id_agente`,`nombre_agente`,`correo_agente`,`usuario_agente`,`contrasena_agente`,`id_rol`,`eliminar`,`fecha_eliminado`) values (1,'prueba','prueba1@gmail.com','prueba1','123456',1,0,NULL),(21,'veronica dussan','veanmi_12@hotmail.com','veronicadussan1127','vgpIkHSz',1,0,NULL),(22,'veronica dussan','veanmi_12@hotmail.com','veronicadussan2369','cT8KxThf',1,0,NULL),(23,'veronica dussan','veanmi_12@hotmail.com','veronicadussan0591','qwEe7AUK',1,0,NULL),(24,'ana milena','anmidupa@hotmail.com','AnaMilenaDussan437_','tOGodXuO',2,1,'2022-10-03 19:09:47'),(25,'miguel dussan','vejumadu@gmail.com','migueldussan3731','yU3GpxFc',1,0,NULL),(26,'veronicadussan','veanmi_1122@hotmail.com','veronicadussan0749','systGnJx',1,0,NULL),(27,'veronica dussan','veanmi_12@hotmail.com','veronicadussan4_45','ZOl5SLDM',2,0,NULL),(28,'veronica dussan','veanmi_12@hotmail.com','veronicadussan_2_6','xsfLOrUx',1,0,NULL),(29,'veronica dussan','veanmi_12@hotmail.com','veronicadussan7244','JONGEtbl',1,0,'2022-10-03 19:12:41'),(30,'veronica dussan','veanmi_12@hotmail.com','veronicadussan5569','nAIS7yEV',1,0,NULL),(31,'veronica','veronica@hotmail.com','veronica8622','8yNZm5ah',2,0,NULL),(32,'pruebas agentes','pruebas@gotmiallll.com','pruebasagentes','gWKzlYgO',1,0,'0000-00-00 00:00:00'),(33,'ana veronica parra','veanmi_12@hotmail.com','anaveronicaparra','dYVIp8Nn',1,0,'0000-00-00 00:00:00');
+insert  into `agentes`(`id_agente`,`nombre_agente`,`correo_agente`,`usuario_agente`,`contrasena_agente`,`id_rol`,`eliminar`,`fecha_eliminado`) values (1,'prueba','prueba1@gmail.com','prueba1','123456',1,0,NULL),(21,'veronica dussan','veanmi_12@hotmail.com','veronicadussan1127','vgpIkHSz',1,0,NULL),(22,'veronica dussan','veanmi_12@hotmail.com','veronicadussan2369','cT8KxThf',1,0,NULL),(23,'veronica dussan','veanmi_12@hotmail.com','veronicadussan0591','qwEe7AUK',1,0,NULL),(24,'ana milena','anmidupa@hotmail.com','AnaMilenaDussan437_','tOGodXuO',2,0,'2022-10-03 19:09:47'),(25,'miguel dussan','vejumadu@gmail.com','migueldussan3731','yU3GpxFc',1,0,NULL),(26,'veronicadussan','veanmi_1122@hotmail.com','veronicadussan0749','systGnJx',1,0,NULL),(27,'veronica dussan','veanmi_12@hotmail.com','veronicadussan4_45','ZOl5SLDM',2,0,NULL),(28,'veronica dussan','veanmi_12@hotmail.com','veronicadussan_2_6','xsfLOrUx',1,0,NULL),(29,'veronica dussan','veanmi_12@hotmail.com','veronicadussan7244','JONGEtbl',1,0,'2022-10-03 19:12:41'),(30,'veronica dussan','veanmi_12@hotmail.com','veronicadussan5569','nAIS7yEV',1,0,NULL),(31,'veronica','veronica@hotmail.com','veronica8622','8yNZm5ah',2,0,NULL),(32,'pruebas agentes','pruebas@gotmiallll.com','pruebasagentes','gWKzlYgO',1,0,'0000-00-00 00:00:00'),(33,'ana veronica parra','veanmi_12@hotmail.com','anaveronicaparra','dYVIp8Nn',1,0,'0000-00-00 00:00:00');
 
 /*Table structure for table `categorias` */
 
@@ -76,11 +76,11 @@ CREATE TABLE `clientes` (
   `eliminar` int(11) DEFAULT NULL,
   `fecha_eliminado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `clientes` */
 
-insert  into `clientes`(`id_cliente`,`nombre_cliente`,`id_proyecto`,`eliminar`,`fecha_eliminado`) values (1,'promocion social',1,0,NULL),(2,'la escuelita',1,0,NULL),(3,'alcaldia de neiva',2,0,NULL),(4,'alcaldia del huila',2,0,NULL),(13,'ana',0,NULL,NULL),(14,'\r\nmilena',0,NULL,NULL),(15,'\r\ndussan',0,NULL,NULL),(16,'sws',0,NULL,NULL);
+insert  into `clientes`(`id_cliente`,`nombre_cliente`,`id_proyecto`,`eliminar`,`fecha_eliminado`) values (1,'promocion social',1,0,NULL),(2,'la escuelita',1,0,NULL),(3,'alcaldia de neiva',2,0,NULL),(4,'alcaldia del huila',2,0,'0000-00-00 00:00:00');
 
 /*Table structure for table `estados` */
 
@@ -92,11 +92,11 @@ CREATE TABLE `estados` (
   `eliminar` tinyint(1) DEFAULT NULL,
   `fecha_eliminado` datetime DEFAULT NULL,
   PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `estados` */
 
-insert  into `estados`(`id_estado`,`estado`,`eliminar`,`fecha_eliminado`) values (1,'En proceso',NULL,NULL),(2,'En espera de la respuesta del cliente',NULL,NULL),(3,'En espera de respuesta del agente',NULL,NULL),(4,'Cerrado',NULL,NULL);
+insert  into `estados`(`id_estado`,`estado`,`eliminar`,`fecha_eliminado`) values (1,'En proceso',0,'0000-00-00 00:00:00'),(2,'En espera de la respuesta del cliente',0,NULL),(3,'En espera de respuesta del agente',0,NULL),(4,'Cerrado',0,NULL);
 
 /*Table structure for table `permisos` */
 
@@ -179,20 +179,6 @@ CREATE TABLE `proyectos` (
 /*Data for the table `proyectos` */
 
 insert  into `proyectos`(`id_proyecto`,`nombre_proyecto`,`identificador_proyecto`,`eliminar`,`fecha_eliminado`) values (1,'Institucion o sede educativa','IE',0,NULL),(2,'Sede alcaldia de Neiva','SA',0,NULL),(3,'General','G',0,'0000-00-00 00:00:00');
-
-/*Table structure for table `prueba` */
-
-DROP TABLE IF EXISTS `prueba`;
-
-CREATE TABLE `prueba` (
-  `id_prueba` int(11) NOT NULL AUTO_INCREMENT,
-  `datos_prueba` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_prueba`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `prueba` */
-
-insert  into `prueba`(`id_prueba`,`datos_prueba`) values (53,'hola'),(54,'\r\nuno'),(55,'\r\ntre'),(56,'\r\ncinco'),(57,'rojjo'),(58,'\r\namarillo'),(59,'\r\nvrde');
 
 /*Table structure for table `roles` */
 

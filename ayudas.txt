@@ -1,0 +1,33 @@
+imprimir arreglo
+print_r($clientes);
+imprimir
+echo $ejemplo;
+
+
+ejemplo o maybe
+CONTROLADOR
+  public function AgregarPrueba()
+  {
+    $valor = $_POST["valores"];
+    $valore = chop($valor);
+    $valores = nl2br($valore);
+    $array_datos = explode("<br />", $valores);
+    foreach ($array_datos as $valor) {
+      // print_r ($valor);
+      $this->model->setPrueba($valor);
+    }
+  }
+MODELO
+  public function getprueba()
+  {
+    $sql ="SELECT * FROM prueba";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function setPrueba($valor)
+  {
+    $query_insert ="INSERT INTO prueba(datos_prueba) VALUES (?)";
+    $arrData=array ($valor);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }

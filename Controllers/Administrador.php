@@ -110,27 +110,49 @@ class Administrador extends Controllers
     $data['tag_page'] = "Soporte - Incubarhuila";
     $data['proyectos'] = $this->model->getProyectos();
     $data['cliente'] = $this->model->getCliente();
-    $data['pruebas'] = $this->model->getprueba();
     $this->views->getView($this, "cliente", $data);
   }
   public function AgregarClientes()
   {
-    $nombre = $_POST["nombre_cliente"];
-    $id_proyecto = $_POST["id_proyecto"];
+    $nombre = $_POST['nombre_cliente'];
     $nombreCliente = chop($nombre);
     $nombre_cliente = nl2br($nombreCliente);
     $array_datos = explode("<br />", $nombre_cliente);
-    $numero = count($array_datos); 
-    for ($i=0; $i==$numero ; $i++) { 
-      $uno=1;
-    } print_r ($uno);
-    foreach ($array_datos as $clientes)
-    {
-      // print_r ($valor);
-      // $this->model->setClientes($clientes,$id_proyecto);
+    $id_proyecto = $_POST['id_proyecto'];
+    $IdentificadorProyecto = implode($id_proyecto);
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = $_POST["fecha_eliminado"];
+    for ($i = 0, $size = count($array_datos); $i < $size; ++$i) {
+      $dato_proyecto[$i] = $IdentificadorProyecto;
+      $dato_Eliminar[$i] = $eliminar;
+      $dato_Fecha_Eliminar[$i] = $fecha_eliminado;
     }
-    // $this->model->setCliente($valor);
-    // header("Location: ".base_url()."administrador/cliente");
+    foreach ($array_datos as $clientes) {
+      foreach ($dato_proyecto as $proyecto) {
+      }
+      foreach ($dato_Eliminar as $eliminacion) {
+      }
+      foreach ($dato_Fecha_Eliminar as $fechaEliminacion) {
+      }
+      $this->model->setClientes($clientes,$proyecto,$eliminacion,$fechaEliminacion);
+    }
+    header("Location: ".base_url()."administrador/cliente");
+  }
+  public function EliminarCliente()
+  {
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = date("Y-m-d H:i:s");
+    $id_cliente = $_POST['id_cliente'];
+    $this->model->updateEliminarCliente($eliminar, $fecha_eliminado, $id_cliente);
+    header("Location: " . base_url() . "administrador/cliente");
+  }
+  public function ModificarCliente()
+  {
+    $nombre_cliente = $_POST['nombre_cliente'];
+    $id_proyecto = $_POST['id_proyecto'];
+    $id_cliente = $_POST['id_cliente'];
+    $this->model->updateModificarCliente($nombre_cliente, $id_proyecto,$id_cliente);
+    header("Location: " . base_url() . "administrador/cliente");
   }
 
   // Prioridades
@@ -141,8 +163,6 @@ class Administrador extends Controllers
     $data['administrador'] = "Administrador";
     $data['tag_page'] = "Soporte - Incubarhuila";
     $data['proyectos'] = $this->model->getProyectos();
-    // $id_proyecto=;
-    // $data['proyectosID'] = $this->model->getProyectosID($id_proyecto);
     $data['prioridades'] = $this->model->getPrioridades();
     $this->views->getView($this, "prioridades", $data);
   }
@@ -268,7 +288,7 @@ class Administrador extends Controllers
     $data['administrador'] = "Administrador";
     $data['vista'] = "Tipo identificacion";
     $data['tag_page'] = "Soporte - Incubarhuila";
-    $data['titulo'] = "Tipo identificacion";
+    $data['titulo'] = "Tipo identificación";
     $data['identificaciones'] = $this->model->getTipoIdentificacion();
     $this->views->getView($this, "tipo_identificacion", $data);
   }
@@ -296,17 +316,37 @@ class Administrador extends Controllers
     header("Location: " . base_url() . "administrador/tipo_identificacion");
   }
 
-
-  public function AgregarPrueba()
+  // ESTADOS
+  public function estado()
   {
-    $valor = $_POST["valores"];
-    $valore = chop($valor);
-    $valores = nl2br($valore);
-    $array_datos = explode("<br />", $valores);
-    foreach ($array_datos as $valor)
-    {
-      // print_r ($valor);
-      $this->model->setPrueba($valor);
-    }
+    $data['administrador'] = "Administrador";
+    $data['vista'] = "Estados";
+    $data['tag_page'] = "Soporte - Incubarhuila";
+    $data['titulo'] = "Estados";
+    $data['estados'] = $this->model->getEstado();
+    $this->views->getView($this, "estado", $data);
+  }
+  public function AgregarEstado()
+  {
+    $estado = $_POST['estado'];
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = $_POST['fecha_eliminado'];
+    $this->model->setEstado($estado, $eliminar, $fecha_eliminado);
+    header("Location: " . base_url() . "administrador/estado");
+  }
+  public function EliminarEstado()
+  {
+    $eliminar = $_POST['eliminar'];
+    $fecha_eliminado = date("Y-m-d H:i:s");
+    $id_estado = $_POST['id_estado'];
+    $this->model->updateEliminarEstado($eliminar, $fecha_eliminado, $id_estado);
+    header("Location: " . base_url() . "administrador/estado");
+  }
+  public function ModificarEstado()
+  {
+    $estado = $_POST['estado'];
+    $id_estado = $_POST['id_estado'];
+    $this->model->updateModificarEstado($estado, $id_estado);
+    header("Location: " . base_url() . "administrador/estado");
   }
 }

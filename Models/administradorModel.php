@@ -6,6 +6,7 @@ class administradorModel extends Mysql
     parent::__construct();
   }
 
+  // ROLES
   public function getRol()
   {
     $sql ="SELECT * FROM roles";
@@ -25,13 +26,44 @@ class administradorModel extends Mysql
     $request_insert=$this->insert($query_insert,$arrData);
     return $request_insert;
   }
-  // public function setPermiso(string $id_permiso)
-  // {
-  //   $query_insert ="INSERT INTO roles(nombre_rol) VALUES (?)";
-  //   $arrData=array ($nombre_rol);
-  //   $request_insert=$this->insert($query_insert,$arrData);
-  //   return $request_insert;
-  // }
+
+  // CLIENTES
+  public function getCliente()
+  {
+    $sql ="SELECT c.id_cliente,c.nombre_cliente, p.nombre_proyecto FROM clientes c, proyectos p WHERE c.id_proyecto=p.id_proyecto AND c.eliminar=0";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function setClientes($clientes,$proyecto,$eliminacion,$fechaEliminacion)
+  {
+    $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto,eliminar,fecha_eliminado) VALUES (?,?,?,?)";
+    $arrData=array ($clientes,$proyecto,$eliminacion,$fechaEliminacion);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
+  public function setCliente($valor)
+  {
+    $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto) VALUES ('$valor')";
+    $arrData=array ($valor);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
+  public function updateEliminarCliente($eliminar,$fecha_eliminado,$id_cliente)
+  {
+    $sql ="UPDATE clientes SET eliminar=? ,fecha_eliminado=? where id_cliente=$id_cliente";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarCliente($nombre_cliente, $id_proyecto,$id_cliente)
+  {
+    $sql ="UPDATE clientes SET nombre_cliente=?,id_proyecto=? where id_cliente=$id_cliente";
+    $arrData= array ($nombre_cliente,$id_proyecto);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+
+  // AGENTES
   public function getAgente()
   {
     $sql ="SELECT a.id_agente,a.nombre_agente, a.correo_agente,a.usuario_agente, r.nombre_rol FROM agentes a, roles r WHERE a.id_rol=r.id_rol AND a.eliminar=0";
@@ -59,80 +91,8 @@ class administradorModel extends Mysql
     $request=$this->update($sql,$arrData);
     return $request;
   }
-  public function setCategoria(string $nombre_categoria,$eliminar,$fecha_eliminado)
-  {
-    $query_insert ="INSERT INTO categorias(nombre_categoria,eliminar,fecha_eliminado) VALUES (?,?,?)";
-    $arrData=array ($nombre_categoria,$eliminar,$fecha_eliminado);
-    $request_insert=$this->insert($query_insert,$arrData);
-    return $request_insert;
-  }
-  public function getCategoria()
-  {
-    $sql ="SELECT * FROM categorias where eliminar=0";
-    $request=$this->select_all($sql);
-    return $request;
-  }
-  public function updateEliminarCategoria($eliminar,$fecha_eliminado,$id_categoria)
-  {
-    $sql ="UPDATE categorias SET eliminar=? ,fecha_eliminado=? where id_categoria=$id_categoria";
-    $arrData= array ($eliminar,$fecha_eliminado);
-    $request=$this->update($sql,$arrData);
-    return $request;
-  }
-  public function updateModificarCategoria($nombre_categoria,$id_categoria)
-  {
-    $sql ="UPDATE categorias SET nombre_categoria=? where id_categoria=$id_categoria";
-    $arrData= array ($nombre_categoria);
-    $request=$this->update($sql,$arrData);
-    return $request;
-  }
 
-  public function setProyecto(string $nombre_proyecto,string $identificador_proyecto,$eliminar,$fecha_eliminado)
-  {
-    $query_insert ="INSERT INTO proyectos(nombre_proyecto,identificador_proyecto,eliminar,fecha_eliminado) VALUES (?,?,?,?)";
-    $arrData=array ($nombre_proyecto,$identificador_proyecto,$eliminar,$fecha_eliminado);
-    $request_insert=$this->insert($query_insert,$arrData);
-    return $request_insert;
-  }
-  public function getProyectos()
-  {
-    $sql ="SELECT * FROM proyectos WHERE eliminar=0";
-    $request=$this->select_all($sql);
-    return $request;
-  }
-  public function updateEliminarProyecto($eliminar,$fecha_eliminado,$id_proyecto)
-  {
-    $sql ="UPDATE proyectos SET eliminar=? ,fecha_eliminado=? where id_proyecto=$id_proyecto";
-    $arrData= array ($eliminar,$fecha_eliminado);
-    $request=$this->update($sql,$arrData);
-    return $request;
-  }
-  public function updateModificarProyecto($nombre_proyecto,$identificador_proyecto,$id_proyecto)
-  {
-    $sql ="UPDATE proyectos SET nombre_proyecto=? ,identificador_proyecto=? where id_proyecto=$id_proyecto";
-    $arrData= array ($nombre_proyecto,$identificador_proyecto);
-    $request=$this->update($sql,$arrData);
-    return $request;
-  }
-  // public function getProyectosID($id_proyecto)
-  // {
-  //   $sql ="SELECT * FROM proyectos WHERE id_proyecto=$id_proyecto";
-  //   $request=$this->select_all($sql);
-  //   return $request;
-  // }
-  public function getCliente()
-  {
-    $sql ="SELECT c.nombre_cliente, p.nombre_proyecto FROM clientes c, proyectos p WHERE c.id_proyecto=p.id_proyecto";
-    $request=$this->select_all($sql);
-    return $request;
-  }
-  public function setClientes($clientes,$id_proyecto)
-  {
-    $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto) VALUES (?,?)";
-    $arrData=array ($clientes,$id_proyecto);
-    $request_insert=$this->insert($query_insert,$arrData);
-    return $request_insert;
-  }
+  // PRIORIDADES
   public function getPrioridades()
   {
     $sql ="SELECT p.id_proyecto,pr.id_prioridad,pr.nombre_prioridad, p.nombre_proyecto FROM prioridades pr, proyectos p WHERE pr.id_proyecto=p.id_proyecto AND pr.eliminar=0";
@@ -160,13 +120,8 @@ class administradorModel extends Mysql
     $request=$this->update($sql,$arrData);
     return $request;
   }
-  public function setCliente($valor)
-  {
-    $query_insert ="INSERT INTO clientes(nombre_cliente,id_proyecto) VALUES ('$valor')";
-    $arrData=array ($valor);
-    $request_insert=$this->insert($query_insert,$arrData);
-    return $request_insert;
-  }
+
+  // REQUERIMIENTOS
   public function setRequerimiento($tipo_requerimiento, $eliminar, $fecha_eliminado)
   {
     $query_insert ="INSERT INTO tipo_requerimientos(tipo_requerimiento,eliminar,fecha_eliminado) VALUES (?,?,?)";
@@ -194,6 +149,8 @@ class administradorModel extends Mysql
     $request=$this->update($sql,$arrData);
     return $request;
   }
+
+  // IDENTIFICACIONES
   public function setTipoIdentificacion($tipo_identificacion, $eliminar, $fecha_eliminado)
   {
     $query_insert ="INSERT INTO tipo_identificaciones(tipo_identificacion,eliminar,fecha_eliminado) VALUES (?,?,?)";
@@ -222,21 +179,114 @@ class administradorModel extends Mysql
     return $request;
   }
 
-
-
-  public function getprueba()
+  // PROYECTOS
+  public function setProyecto(string $nombre_proyecto,string $identificador_proyecto,$eliminar,$fecha_eliminado)
   {
-    $sql ="SELECT * FROM prueba";
-    $request=$this->select_all($sql);
-    return $request;
-  }
-  public function setPrueba($valor)
-  {
-    $query_insert ="INSERT INTO prueba(datos_prueba) VALUES (?)";
-    $arrData=array ($valor);
+    $query_insert ="INSERT INTO proyectos(nombre_proyecto,identificador_proyecto,eliminar,fecha_eliminado) VALUES (?,?,?,?)";
+    $arrData=array ($nombre_proyecto,$identificador_proyecto,$eliminar,$fecha_eliminado);
     $request_insert=$this->insert($query_insert,$arrData);
     return $request_insert;
   }
-  
+  public function getProyectos()
+  {
+    $sql ="SELECT * FROM proyectos WHERE eliminar=0";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function updateEliminarProyecto($eliminar,$fecha_eliminado,$id_proyecto)
+  {
+    $sql ="UPDATE proyectos SET eliminar=? ,fecha_eliminado=? where id_proyecto=$id_proyecto";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarProyecto($nombre_proyecto,$identificador_proyecto,$id_proyecto)
+  {
+    $sql ="UPDATE proyectos SET nombre_proyecto=? ,identificador_proyecto=? where id_proyecto=$id_proyecto";
+    $arrData= array ($nombre_proyecto,$identificador_proyecto);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+
+  // CATEGORIAS
+  public function setCategoria(string $nombre_categoria,$eliminar,$fecha_eliminado)
+  {
+    $query_insert ="INSERT INTO categorias(nombre_categoria,eliminar,fecha_eliminado) VALUES (?,?,?)";
+    $arrData=array ($nombre_categoria,$eliminar,$fecha_eliminado);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
+  public function getCategoria()
+  {
+    $sql ="SELECT * FROM categorias where eliminar=0";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function updateEliminarCategoria($eliminar,$fecha_eliminado,$id_categoria)
+  {
+    $sql ="UPDATE categorias SET eliminar=? ,fecha_eliminado=? where id_categoria=$id_categoria";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarCategoria($nombre_categoria,$id_categoria)
+  {
+    $sql ="UPDATE categorias SET nombre_categoria=? where id_categoria=$id_categoria";
+    $arrData= array ($nombre_categoria);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+
+  // ESTADOS
+  public function setEstado($estado, $eliminar, $fecha_eliminado)
+  {
+    $query_insert ="INSERT INTO estados(estado,eliminar,fecha_eliminado) VALUES (?,?,?)";
+    $arrData=array ($estado, $eliminar, $fecha_eliminado);
+    $request_insert=$this->insert($query_insert,$arrData);
+    return $request_insert;
+  }
+  public function getEstado()
+  {
+    $sql ="SELECT * FROM estados where eliminar=0";
+    $request=$this->select_all($sql);
+    return $request;
+  }
+  public function updateEliminarEstado($eliminar,$fecha_eliminado,$id_estado)
+  {
+    $sql ="UPDATE estados SET eliminar=? ,fecha_eliminado=? where id_estado=$id_estado";
+    $arrData= array ($eliminar,$fecha_eliminado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+  public function updateModificarEstado($estado,$id_estado)
+  {
+    $sql ="UPDATE estados SET estado=? where id_estado=$id_estado";
+    $arrData= array ($estado);
+    $request=$this->update($sql,$arrData);
+    return $request;
+  }
+
+
+
+
+  // public function setPermiso(string $id_permiso)
+  // {
+  //   $query_insert ="INSERT INTO roles(nombre_rol) VALUES (?)";
+  //   $arrData=array ($nombre_rol);
+  //   $request_insert=$this->insert($query_insert,$arrData);
+  //   return $request_insert;
+  // }
+
+  // public function getProyectosID($id_proyecto)
+  // {
+  //   $sql ="SELECT * FROM proyectos WHERE id_proyecto=$id_proyecto";
+  //   $request=$this->select_all($sql);
+  //   return $request;
+  // }
+
+
+
+
+
 }
 ?>

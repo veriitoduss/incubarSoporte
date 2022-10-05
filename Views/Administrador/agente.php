@@ -12,8 +12,8 @@ include "Views/Layouts/Administrador/menu.php"; ?>
           <div class="page-header-title">
             <ol class="breadcrumb pull-right">
               <li><a href="<?php echo base_url(); ?>administrador"><?php echo $data['administrador'] ?></a></li>
-              <li><a href="#">Adiciones</a></li>
-              <li class="active">Agente</li>
+              <li>Adiciones</li>
+              <li class="active"><?php echo $data['titulo'] ?></li>
             </ol>
             <div class="clearfix"></div>
           </div>
