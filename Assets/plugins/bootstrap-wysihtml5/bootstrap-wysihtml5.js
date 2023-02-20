@@ -5,18 +5,18 @@
         "font-styles": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li class='dropdown'>" +
-              "<a class='btn btn-default dropdown-toggle" + size + "' data-toggle='dropdown' href='#'>" +
-              "<i class='fa fa-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<i class='fa fa-angle-down'></i>" +
-              "</a>" +
-              "<ul class='dropdown-menu'>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div' tabindex='-1'>" + locale.font_styles.normal + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1' tabindex='-1'>" + locale.font_styles.h1 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2' tabindex='-1'>" + locale.font_styles.h2 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3' tabindex='-1'>" + locale.font_styles.h3 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h4'>" + locale.font_styles.h4 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h5'>" + locale.font_styles.h5 + "</a></li>" +
-                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h6'>" + locale.font_styles.h6 + "</a></li>" +
-              "</ul>" +
+            //   "<a class='btn btn-default dropdown-toggle" + size + "' data-toggle='dropdown' href='#'>" +
+            //   "<i class='fa fa-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<i class='fa fa-angle-down'></i>" +
+            //   "</a>" +
+            //   "<ul class='dropdown-menu'>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div' tabindex='-1'>" + locale.font_styles.normal + "</a></li>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1' tabindex='-1'>" + locale.font_styles.h1 + "</a></li>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2' tabindex='-1'>" + locale.font_styles.h2 + "</a></li>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3' tabindex='-1'>" + locale.font_styles.h3 + "</a></li>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h4'>" + locale.font_styles.h4 + "</a></li>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h5'>" + locale.font_styles.h5 + "</a></li>" +
+            //     "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h6'>" + locale.font_styles.h6 + "</a></li>" +
+            //   "</ul>" +
             "</li>";
         },
 
@@ -46,49 +46,49 @@
         "link": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-link-modal modal fade'>" +
-              " <div class='modal-dialog'>" +
-              " <div class='modal-content'>" +
-                "<div class='modal-header'>" +
-                  "<a class='close' data-dismiss='modal'></a>" +
-                  "<h4 class='modal-title'>" + locale.link.insert + "</h4>" +
-                "</div>" +
-                "<div class='modal-body'>" +
-                  "<input type='text' value='http://' class='bootstrap-wysihtml5-insert-link-url1 form-control large'>" +
-                  "<label style='margin-top:5px;'> <input type='checkbox' class='bootstrap-wysihtml5-insert-link-target' checked>" + locale.link.target + "</label>" +
-                "</div>" +
-                "<div class='modal-footer'>" +
-                  "<a href='#' class='btn btn-default' data-dismiss='modal'>" + locale.link.cancel + "</a>" +
-                  "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.link.insert + "</a>" +
-                "</div>" +
-              "</div>" +
-              "</div>" +
-              "</div>" +
-              "<a class='btn btn-default" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "' tabindex='-1'><i class='fa fa-share-square-o'></i></a>" +
+            //   "<div class='bootstrap-wysihtml5-insert-link-modal modal fade'>" +
+            //   " <div class='modal-dialog'>" +
+            //   " <div class='modal-content'>" +
+                // "<div class='modal-header'>" +
+                //   "<a class='close' data-dismiss='modal'></a>" +
+                //   "<h4 class='modal-title'>" + locale.link.insert + "</h4>" +
+                // "</div>" +
+                // "<div class='modal-body'>" +
+                //   "<input type='text' value='http://' class='bootstrap-wysihtml5-insert-link-url1 form-control large'>" +
+                //   "<label style='margin-top:5px;'> <input type='checkbox' class='bootstrap-wysihtml5-insert-link-target' checked>" + locale.link.target + "</label>" +
+                // "</div>" +
+                // "<div class='modal-footer'>" +
+                //   "<a href='#' class='btn btn-default' data-dismiss='modal'>" + locale.link.cancel + "</a>" +
+                //   "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.link.insert + "</a>" +
+                // "</div>" +
+            //   "</div>" +
+            //   "</div>" +
+            //   "</div>" +
+            //   "<a class='btn btn-default" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "' tabindex='-1'><i class='fa fa-share-square-o'></i></a>" +
             "</li>";
         },
 
         "image": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-image-modal modal fade'>" +
-              " <div class='modal-dialog'>" +
-              " <div class='modal-content'>" +
-                "<div class='modal-header'>" +
+            //   "<div class='bootstrap-wysihtml5-insert-image-modal modal fade'>" +
+            //   " <div class='modal-dialog'>" +
+            //   " <div class='modal-content'>" +
+                // "<div class='modal-header'>" +
                   "<a class='close' data-dismiss='modal'></a>" +
-                  "<h4 class='modal-title'>" + locale.image.insert + "</h4>" +
-                "</div>" +
-                "<div class='modal-body'>" +
-                  "<input type='text' value='http://' class='bootstrap-wysihtml5-insert-image-url form-control large'>" +
-                "</div>" +
-                "<div class='modal-footer'>" +
-                  "<a href='#' class='btn btn-default' data-dismiss='modal'>" + locale.image.cancel + "</a>" +
-                  "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.image.insert + "</a>" +
-                "</div>" +
-              "</div>" +
-              "</div>" +
-              "</div>" +
-              "<a class='btn btn-default" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='fa fa-picture-o'></i></a>" +
+                // //   "<h4 class='modal-title'>" + locale.image.insert + "</h4>" +
+                // "</div>" +
+                // "<div class='modal-body'>" +
+                //   "<input type='text' value='http://' class='bootstrap-wysihtml5-insert-image-url form-control large'>" +
+                // "</div>" +
+                // "<div class='modal-footer'>" +
+                //   "<a href='#' class='btn btn-default' data-dismiss='modal'>" + locale.image.cancel + "</a>" +
+                //   "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.image.insert + "</a>" +
+                // "</div>" +
+            //   "</div>" +
+            //   "</div>" +
+            //   "</div>" +
+            //   "<a class='btn btn-default" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='fa fa-picture-o'></i></a>" +
             "</li>";
         },
 
